@@ -49,12 +49,11 @@ function Faq() {
     },
   ];
 
-
   return (
     <Wrapper>
       <Container style={{}}>
         <ContainerLeft style={{}}>
-          <Overview style={{}}>الأسئلة الشائعة</Overview>
+          <Overview style={{ alignSelf: "flex-end" }}>الأسئلة الشائعة</Overview>
           <div
             style={{
               display: "flex",
@@ -64,10 +63,14 @@ function Faq() {
               gap: "35%",
             }}
           >
-            <Title>
+            <Title
+              style={{
+                textAlign: "right",
+              }}
+            >
               هل تبحث عن إجابات؟
               <br />
-              <b>لقد جئت إلى المكان الصحيح.</b>
+              <b>لقد جئت إلى المكان الصحيح</b>
             </Title>
           </div>
         </ContainerLeft>
@@ -131,7 +134,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   background: #fcf8f3;
-  height: 550px;
+
   @media (max-width: 1268px) {
     height: fit-content;
   }
@@ -140,7 +143,7 @@ const Wrapper = styled.div`
 const Container = styled.div`
   display: flex;
   flex-direction: row-reverse;
-  padding: 7.5rem 0;
+  padding: 4.5rem 0;
   gap: 7rem;
 
   @media (max-width: 1268px) {
@@ -156,8 +159,7 @@ const ContainerLeft = styled.div`
 
   @media (max-width: 1268px) {
     width: fit-content;
-    padding: 0 0rem;
-    padding-left: 24px;
+    align-items: center;
   }
 `;
 
@@ -177,8 +179,6 @@ const ContainerRight = styled.div`
 `;
 
 const Overview = styled.div`
-  justify-self: start;
-
   width: fit-content;
   margin-bottom: 1.5rem;
   color: #155cba;

@@ -61,7 +61,13 @@ function Footer() {
                 {" "}
                 اتصل بنا
               </MenuHeader>
-              <div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "row",
+                  justifyContent: "center",
+                }}
+              >
                 <a
                   style={{
                     textDecoration: "none",

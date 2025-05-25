@@ -33,7 +33,7 @@ function MainContainer() {
           <Hero_ContentTitle>وكالة كراء سيارات</Hero_ContentTitle>
           <Hero_ContentSubTitle
             style={{
-              textAlign: "left",
+              textAlign: "center",
             }}
           >
             Puerto Marina Rent Car

@@ -341,7 +341,7 @@ const Wrapper = styled.div`
   padding: 0px 0 24px 0;
 
   @media (max-width: 1268px) {
-    padding: 0px 0 400px 0;
+    padding: 0px 0 24px 0;
   }
 
   align-items: center;
@@ -371,6 +371,8 @@ const Title = styled.h1`
 
   @media (max-width: 1268px) {
     text-align: center;
+    font-size: 1.5rem;
+    line-height: 2rem;
   }
 `;
 
