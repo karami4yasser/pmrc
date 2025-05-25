@@ -58,11 +58,7 @@ function BuyNowOptions() {
           },
           {
             icon: SettingsIcon,
-            text: "Automaric",
-          },
-          {
-            icon: SettingsIcon,
-            text: "Automaric",
+            text: "Boite Vitesse Automatique",
           },
           {
             icon: LocalGasStationIcon,
@@ -79,11 +75,7 @@ function BuyNowOptions() {
           },
           {
             icon: SettingsIcon,
-            text: "Manual",
-          },
-          {
-            icon: SettingsIcon,
-            text: "Manual",
+            text: "Boite Vitesse Manual",
           },
           {
             icon: LocalGasStationIcon,
@@ -102,11 +94,7 @@ function BuyNowOptions() {
           },
           {
             icon: SettingsIcon,
-            text: "Automaric",
-          },
-          {
-            icon: SettingsIcon,
-            text: "Automaric",
+            text: "Boite Vitesse Automatique",
           },
           {
             icon: LocalGasStationIcon,
@@ -125,11 +113,7 @@ function BuyNowOptions() {
           },
           {
             icon: SettingsIcon,
-            text: "Automaric",
-          },
-          {
-            icon: SettingsIcon,
-            text: "Automaric",
+            text: "Boite Vitesse Automatique",
           },
           {
             icon: LocalGasStationIcon,
