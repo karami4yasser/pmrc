@@ -1,16 +1,25 @@
 import React from "react";
 import styled from "styled-components";
 import appStoreIcon from "../../../assets/app-store-badge.svg";
-import playStoreIcon from "../../../assets/google-play-badge.svg";
+import qr from "../../../assets/product/qr.png";
+import logo from "../../../assets/product/footer_logo.png";
 function Footer() {
   return (
     <Wrapper>
       <Container>
         <ContainerLinks>
           <AppsLinks>
-            <SectionIndicator>Tractive App</SectionIndicator>
-            <h3>Get peace of mind on the go with the free Tractive GPS app.</h3>
-            <div style={{ display: "flex", gap: 24 }}>
+            <img
+              style={{
+                width: "350px",
+                marginTop: "10px",
+                marginBottom: "10px",
+              }}
+              src={logo}
+            />
+            <SectionIndicator>Puerto Marina Rent</SectionIndicator>
+            <h3>شركة كراء السيارات في طنجة</h3>
+            {/* <div style={{ display: "flex", gap: 24 }}>
               <a
                 href="https://itunes.apple.com/us/app/tractive-gps-pet-finder/id921588809?mt=8"
                 data-tracking-event="app_store_link_click"
@@ -40,19 +49,41 @@ function Footer() {
                   width="135"
                 />
               </a>
-            </div>
+            </div> */}
           </AppsLinks>
           <Menu>
             <div>
-              <MenuHeader>Customer Care</MenuHeader>
+              <MenuHeader
+                style={{
+                  textAlign: "center",
+                }}
+              >
+                {" "}
+                اتصل بنا
+              </MenuHeader>
               <div>
-                <MenuLink>Shipping & Delivery</MenuLink>
-                <MenuLink>Subscription Plans</MenuLink>
-                <MenuLink>Customer Service</MenuLink>
-                <MenuLink>Tracker Comparison</MenuLink>
+                <a
+                  style={{
+                    textDecoration: "none",
+                    color: "black",
+                    display: "flex",
+                    alignItems: "center",
+                  }}
+                  target="_blank"
+                  href="https://wa.me/212666655782"
+                >
+                  <img
+                    src={qr}
+                    style={{
+                      objectFit: "cover",
+                      width: "200px",
+                      height: "200px",
+                    }}
+                  />
+                </a>
               </div>
             </div>
-            <div>
+            {/*             <div>
               <MenuHeader>Tractive</MenuHeader>
               <div>
                 <MenuLink>Careers</MenuLink>
@@ -72,7 +103,7 @@ function Footer() {
                 <MenuLink>Danger Reports</MenuLink>
                 <MenuLink>Danger Reports</MenuLink>
               </div>
-            </div>
+            </div> */}
           </Menu>
         </ContainerLinks>
       </Container>
@@ -110,6 +141,7 @@ const Container = styled.div`
 
 const ContainerLinks = styled.div`
   display: flex;
+  flex-direction: row-reverse;
   justify-content: space-between;
   margin-bottom: 4.75rem;
 
@@ -123,6 +155,10 @@ const ContainerLinks = styled.div`
 const AppsLinks = styled.div`
   max-width: 20rem;
   margin-bottom: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
 `;
 
 const SectionIndicator = styled.div`

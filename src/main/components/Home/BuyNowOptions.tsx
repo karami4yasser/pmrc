@@ -6,16 +6,141 @@ import accent_gray from "../../../assets/product/accent_gray.jpeg";
 import p208 from "../../../assets/product/208.jpeg";
 import i10 from "../../../assets/product/i10_white.jpeg";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-type SelectedType = "Hundai Accent 2023" | "Hundai i10 2024" | "208";
-type SelectedColorType = "black" | "blue" | "gray";
+import SettingsIcon from "@mui/icons-material/Settings";
+import PersonIcon from "@mui/icons-material/Person";
+import HealthAndSafetyIcon from "@mui/icons-material/HealthAndSafety";
+import LocalGasStationIcon from "@mui/icons-material/LocalGasStation";
+import { OverridableComponent } from "@mui/material/OverridableComponent";
+import { SvgIconTypeMap } from "@mui/material";
+type SelectedType = "Hundai Accent 2023" | "Hundai i10 2024" | "Peugeot 208";
+type SelectedColorType = "black" | "blue" | "gray" | "move" | "white";
+type CarFeature = {
+  icon: OverridableComponent<SvgIconTypeMap<{}, "svg">> & {
+    muiName: string;
+  }; // Assuming you're passing components like <PersonIcon />
+  text: string;
+};
+const colorMap: Record<SelectedColorType, string> = {
+  black: "#000000",
+  blue: "#007bff",
+  gray: "#6c757d",
+  move: "#a020f0", // assuming "move" means purple
+  white: "#ffffff",
+};
+
+// Define the structure of a car color option
+type CarColorOption = {
+  image: string; // Replace with `StaticImageData` if using Next.js images
+  features: CarFeature[];
+};
+
+// Define the full cars object type
+export type CarsType = {
+  [Model in SelectedType]?: {
+    [Color in SelectedColorType]?: CarColorOption;
+  };
+};
 function BuyNowOptions() {
   const [selectedType, setSelectedType] =
     useState<SelectedType>("Hundai Accent 2023");
 
   const [selectedColor, setSelectedColor] =
     useState<SelectedColorType>("black");
+
+  const cars: CarsType = {
+    "Hundai Accent 2023": {
+      black: {
+        image: accent_black,
+        features: [
+          {
+            icon: PersonIcon,
+            text: "+4",
+          },
+          {
+            icon: SettingsIcon,
+            text: "Automaric",
+          },
+          {
+            icon: SettingsIcon,
+            text: "Automaric",
+          },
+          {
+            icon: LocalGasStationIcon,
+            text: "Diesel",
+          },
+        ],
+      },
+      gray: {
+        image: accent_gray,
+        features: [
+          {
+            icon: PersonIcon,
+            text: "+4",
+          },
+          {
+            icon: SettingsIcon,
+            text: "Manual",
+          },
+          {
+            icon: SettingsIcon,
+            text: "Manual",
+          },
+          {
+            icon: LocalGasStationIcon,
+            text: "Diesel",
+          },
+        ],
+      },
+    },
+    "Hundai i10 2024": {
+      white: {
+        image: i10,
+        features: [
+          {
+            icon: PersonIcon,
+            text: "+4",
+          },
+          {
+            icon: SettingsIcon,
+            text: "Automaric",
+          },
+          {
+            icon: SettingsIcon,
+            text: "Automaric",
+          },
+          {
+            icon: LocalGasStationIcon,
+            text: "Diesel",
+          },
+        ],
+      },
+    },
+    "Peugeot 208": {
+      move: {
+        image: p208,
+        features: [
+          {
+            icon: PersonIcon,
+            text: "+4",
+          },
+          {
+            icon: SettingsIcon,
+            text: "Automaric",
+          },
+          {
+            icon: SettingsIcon,
+            text: "Automaric",
+          },
+          {
+            icon: LocalGasStationIcon,
+            text: "Diesel",
+          },
+        ],
+      },
+    },
+  };
   return (
-    <Wrapper>
+    <Wrapper id="cars-section">
       {" "}
       {/*   <Empty style={{}}></Empty> */}
       <Title>
@@ -25,6 +150,7 @@ function BuyNowOptions() {
         <SwitcherOption
           onClick={() => {
             setSelectedType("Hundai Accent 2023");
+            setSelectedColor("black");
           }}
           isSelected={selectedType == "Hundai Accent 2023"}
         >
@@ -34,6 +160,7 @@ function BuyNowOptions() {
         <SwitcherOption
           onClick={() => {
             setSelectedType("Hundai i10 2024");
+            setSelectedColor("white");
           }}
           isSelected={selectedType == "Hundai i10 2024"}
         >
@@ -42,122 +169,129 @@ function BuyNowOptions() {
 
         <SwitcherOption
           onClick={() => {
-            setSelectedType("208");
+            setSelectedType("Peugeot 208");
+            setSelectedColor("move");
           }}
-          isSelected={selectedType == "208"}
+          isSelected={selectedType == "Peugeot 208"}
         >
           Peugeot 208
         </SwitcherOption>
       </Switcher>
       <DeviceContainer>
         <QualitiesLeft>
-          {" "}
-          <QualitiesFeature
-            style={{
-              placeContent: "flex-end",
-              paddingRight: 24,
-            }}
-          >
-            <p>Live location</p>
-            <QualitiesIcon>
-              <NotificationsIcon
+          {cars[selectedType]?.[selectedColor]?.features
+            ?.slice(0, 2)
+            .map((feature, index) => (
+              <QualitiesFeature
                 style={{
-                  color: "white",
-                  width: "20px",
-                  height: "20px",
+                  placeContent: "flex-end",
+                  paddingRight: 24,
                 }}
-              />
-            </QualitiesIcon>
-          </QualitiesFeature>
-          <QualitiesFeature
-            style={{
-              placeContent: "flex-end",
-              paddingRight: 24,
-            }}
-          >
-            <p>Live location</p>
-            <QualitiesIcon>
-              <NotificationsIcon
-                style={{
-                  color: "white",
-                  width: "20px",
-                  height: "20px",
-                }}
-              />
-            </QualitiesIcon>
-          </QualitiesFeature>
+              >
+                <p>{feature.text}</p>
+                <QualitiesIcon>
+                  <feature.icon
+                    style={{
+                      color: "white",
+                      width: "20px",
+                      height: "20px",
+                    }}
+                  />
+                </QualitiesIcon>
+              </QualitiesFeature>
+            ))}
         </QualitiesLeft>
         <ImageContainer>
           <img
+            width="280"
             height="280"
-            src={selectedType == "Hundai Accent 2023" ? accent_black : i10}
-          ></img>
+            src={cars[selectedType]?.[selectedColor]?.image || accent_black}
+            style={{
+              objectFit: "cover",
+              width: "280px",
+              height: "280px",
+            }}
+          />
         </ImageContainer>
         <QualitiesRight>
-          <QualitiesFeature>
-            <QualitiesIcon>
-              <NotificationsIcon
-                style={{
-                  color: "white",
-                  width: "20px",
-                  height: "20px",
-                }}
-              />
-            </QualitiesIcon>
-            <p>Live location</p>
-          </QualitiesFeature>
-          <QualitiesFeature>
-            <QualitiesIcon>
-              <NotificationsIcon
-                style={{
-                  color: "white",
-                  width: "20px",
-                  height: "20px",
-                }}
-              />
-            </QualitiesIcon>
-            <p>Live location</p>
-          </QualitiesFeature>
+          {cars[selectedType]?.[selectedColor]?.features
+            ?.slice(2, 4)
+            .map((feature, index) => (
+              <QualitiesFeature>
+                <QualitiesIcon>
+                  <feature.icon
+                    style={{
+                      color: "white",
+                      width: "20px",
+                      height: "20px",
+                    }}
+                  />
+                </QualitiesIcon>
+                <p>{feature.text}</p>
+              </QualitiesFeature>
+            ))}
         </QualitiesRight>
       </DeviceContainer>
       <PricingContainer>
         <PricingLeft>
           <PricingLeftContent>
-            <h1>{selectedType}</h1>
+            <h1
+              style={{
+                whiteSpace: "nowrap",
+              }}
+            >
+              {selectedType}
+            </h1>
+
             {/*  <h2>£59</h2> */}
           </PricingLeftContent>
         </PricingLeft>
-        <PricingRight>
-          <PricingRightContent>
-            {(["black", "gray", "blue"] as SelectedColorType[]).map((color) => (
-              <div
-                style={{
-                  flexDirection: "column",
-                  display: "flex",
-                  alignItems: "center",
-                  width: "32px",
-                }}
-              >
-                <ColorOptionWrapper
-                  onClick={() => {
-                    setSelectedColor(color);
-                  }}
-                  color={color}
-                >
-                  <ColorOption color={color} />
-                </ColorOptionWrapper>
-                <p
+        <PricingRight
+          style={{
+            alignContent: "center",
+            alignItems: "center",
+            justifyContent: "center",
+            marginTop: "24px",
+          }}
+        >
+          <PricingRightContent
+            style={{
+              alignContent: "center",
+              alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            {(Object.keys(cars[selectedType] || {}) as SelectedColorType[]).map(
+              (color) => (
+                <div
                   style={{
-                    fontSize: "0.875rem",
-                    fontWeight: 550,
-                    color: "#5c606e",
-                    display: selectedColor == color ? "block" : "none",
+                    flexDirection: "column",
+                    display: "flex",
+                    alignItems: "center",
+                    width: "32px",
                   }}
                 >
-                  {color}
-                </p>
-              </div>
-            ))}
+                  <ColorOptionWrapper
+                    onClick={() => {
+                      setSelectedColor(color);
+                    }}
+                    color={color}
+                  >
+                    <ColorOption color={colorMap[color]} />
+                  </ColorOptionWrapper>
+                  <p
+                    style={{
+                      fontSize: "0.875rem",
+                      fontWeight: 550,
+                      color: color == "white" ? "gray" : colorMap[color],
+                      opacity: selectedColor == color ? 1 : 0,
+                    }}
+                  >
+                    {color}
+                  </p>
+                </div>
+              )
+            )}
           </PricingRightContent>
         </PricingRight>
       </PricingContainer>
@@ -170,11 +304,11 @@ function BuyNowOptions() {
             height: "100%",
             textDecoration: "none",
           }}
-          href={
-            selectedType == "Hundai Accent 2023"
-              ? "/gps-tracker-dog"
-              : "/gps-tracker-cat"
-          }
+          href={`https://wa.me/212666655782?text=${encodeURIComponent(
+            `Hi, I'm interested in knowing more about the ${selectedType} in ${selectedColor} color.`
+          )}`}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <ButtonLearnMore>اعرف المزيد</ButtonLearnMore>
         </a>
@@ -186,11 +320,11 @@ function BuyNowOptions() {
             height: "100%",
             textDecoration: "none",
           }}
-          href={
-            selectedType == "Hundai Accent 2023"
-              ? "/gps-tracker-dog"
-              : "/gps-tracker-cat"
-          }
+          href={`https://wa.me/212666655782?text=${encodeURIComponent(
+            `Hi, I'm interested in renting the ${selectedType} in ${selectedColor} color.`
+          )}`}
+          target="_blank"
+          rel="noopener noreferrer"
         >
           <ButtonBuy>احجز الآن</ButtonBuy>
         </a>
@@ -204,7 +338,7 @@ export default BuyNowOptions;
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0px 0 100px 0;
+  padding: 0px 0 24px 0;
 
   @media (max-width: 1268px) {
     padding: 0px 0 400px 0;
@@ -256,8 +390,8 @@ const SwitcherOption = styled.button<SwitcherOptionProps>`
   flex-direction: row;
   justify-content: center;
   align-items: center;
- 
-  padding:0px 12px;
+
+  padding: 0px 12px;
   border-radius: 9999px;
   border: none;
   cursor: pointer;
@@ -412,10 +546,8 @@ const PricingRight = styled.div`
 `;
 
 const PricingRightContent = styled.div`
-  display: flex;
-  flex-direction: row;
-
-  padding-right: 200px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 
   @media (max-width: 1268px) {
     padding-right: 0px;

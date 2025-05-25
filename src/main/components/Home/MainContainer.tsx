@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import catImage from "../../../assets/cat_30.png";
-import cat1 from "../../../assets/product_slider/cat1.png";
-import cat2 from "../../../assets/product_slider/cat2.png";
-import device1 from "../../../assets/product_slider/device1.png";
-import stars5 from "../../../assets/stars5.png";
+import i10 from "../../../assets/product/i10_white.jpeg";
+import accent_black from "../../../assets/product/accent_black.jpeg";
+import accent_gray from "../../../assets/product/accent_gray.jpeg";
+import p208 from "../../../assets/product/208.jpeg";
 import check from "../../../assets/check-mark.svg";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 type SelectedType = "dog" | "cat";
 type SelectedColorType = "black" | "blue" | "gray";
 function MainContainer() {
-  const images = [cat1, device1, cat2];
+  const images = [accent_gray, i10, accent_black, p208];
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const goToPrev = () => {
@@ -31,9 +31,11 @@ function MainContainer() {
       <LeftSideMainContainer>
         <Hero_Content>
           <Hero_ContentTitle>وكالة كراء سيارات</Hero_ContentTitle>
-          <Hero_ContentSubTitle style={{
-            textAlign:'center'
-          }}>
+          <Hero_ContentSubTitle
+            style={{
+              textAlign: "left",
+            }}
+          >
             Puerto Marina Rent Car
           </Hero_ContentSubTitle>
         </Hero_Content>
@@ -42,17 +44,21 @@ function MainContainer() {
             style={{
               textDecoration: "none",
             }}
-            href="/gps-tracker-dog"
+            onClick={() => {
+              document
+                .getElementById("cars-section")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }}
           >
-            <Hero_Button>Dog Tracker</Hero_Button>
+            <Hero_Button>سياراتنا</Hero_Button>
           </a>
           <a
             style={{
               textDecoration: "none",
             }}
-            href="/gps-tracker-cat"
+            onClick={() => window.open("https://wa.me/212666655782", "_blank")}
           >
-            <Hero_Button>Cat Tracker</Hero_Button>
+            <Hero_Button> اتصل بنا</Hero_Button>
           </a>
         </Hero_Buttons>
       </LeftSideMainContainer>
@@ -178,11 +184,11 @@ const Hero_ContentTitle = styled.h1`
 `;
 
 const Hero_ContentSubTitle = styled.h2`
-  font-size: 1rem;
-  line-height: 1.5rem;
+  font-size: 1.5rem;
+  line-height: 2rem;
   margin: 0;
   padding: 0;
-  margin-top: 48px;
+  margin-top: 28px;
 
   @media (max-width: 1268px) {
     font-size: 0.9rem;

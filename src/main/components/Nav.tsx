@@ -4,7 +4,7 @@ import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import styled from "styled-components";
-
+import CarRentalIcon from "@mui/icons-material/CarRental";
 function Nav() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -38,52 +38,64 @@ function Nav() {
           <a
             style={{
               textDecoration: "none",
+              color: "black",
+              display: "flex",
+              alignItems: "center",
             }}
-            href="/gps-tracker-dog"
-          >
-            <ButtonNavigation>Tractive for Dogs</ButtonNavigation>
-          </a>
-
-          <a
-            style={{
-              textDecoration: "none",
+            onClick={() => {
+              document
+                .getElementById("cars-section")
+                ?.scrollIntoView({ behavior: "smooth" });
             }}
-            href="/gps-tracker-cat"
           >
-            <ButtonNavigation>Tractive for Cats</ButtonNavigation>
-          </a>
-
-          <a
-            style={{
-              textDecoration: "none",
-            }}
-            href="/pricing"
-          >
-            <ButtonNavigation>Pricing</ButtonNavigation>
-          </a>
-
-          <a
-            style={{
-              textDecoration: "none",
-            }}
-            href="/blog"
-          >
-            <ButtonNavigation>Blog</ButtonNavigation>
+            <ButtonNavigation
+              style={{
+                textDecoration: "none",
+                color: "black",
+                display: "flex",
+                alignItems: "center",
+                gap: "4px",
+              }}
+            >
+              سياراتنا
+              <div style={{ cursor: "pointer" }}>
+                <CarRentalIcon />
+              </div>
+            </ButtonNavigation>
           </a>
           <a
             style={{
               textDecoration: "none",
+              color: "black",
+              display: "flex",
+              alignItems: "center",
             }}
-            href="/support"
+            target="_blank"
+            href="https://wa.me/212666655782"
           >
-            <ButtonNavigation>Support</ButtonNavigation>
+            <ButtonNavigation
+              style={{
+                textDecoration: "none",
+                color: "black",
+                display: "flex",
+                alignItems: "center",
+                gap: "4px",
+              }}
+            >
+              اتصل بنا
+              <div
+                style={{ cursor: "pointer" }}
+                onClick={() =>
+                  window.open("https://wa.me/212666655782", "_blank")
+                }
+              >
+                <WhatsAppIcon />
+              </div>
+            </ButtonNavigation>
           </a>
         </BarNavigations>
 
-        <div
-          style={{ cursor: "pointer" }}
-          onClick={() => window.open("https://wa.me/1234567890", "_blank")}
-        >
+        <div style={{ cursor: "pointer", opacity: 0 }}>
           <WhatsAppIcon />
         </div>
       </Header>
