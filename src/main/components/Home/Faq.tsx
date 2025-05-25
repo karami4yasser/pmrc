@@ -66,6 +66,7 @@ function Faq() {
             <Title
               style={{
                 textAlign: "right",
+                width: "100%",
               }}
             >
               هل تبحث عن إجابات؟
@@ -158,8 +159,10 @@ const ContainerLeft = styled.div`
   width: 27rem;
 
   @media (max-width: 1268px) {
-    width: fit-content;
+    width: 90%;
     align-items: center;
+    align-content: center;
+    padding: 0;
   }
 `;
 
