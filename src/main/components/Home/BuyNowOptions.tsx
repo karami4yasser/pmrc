@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import device1 from "../../../assets/device1.png";
-import device2 from "../../../assets/device2.png";
+import accent_black from "../../../assets/product/accent_black.jpeg";
+import accent_gray from "../../../assets/product/accent_gray.jpeg";
+import p208 from "../../../assets/product/208.jpeg";
+import i10 from "../../../assets/product/i10_white.jpeg";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-type SelectedType = "accent" | "i10" | "208";
+type SelectedType = "Hundai Accent 2023" | "Hundai i10 2024" | "208";
 type SelectedColorType = "black" | "blue" | "gray";
 function BuyNowOptions() {
-  const [selectedType, setSelectedType] = useState<SelectedType>("accent");
+  const [selectedType, setSelectedType] =
+    useState<SelectedType>("Hundai Accent 2023");
 
   const [selectedColor, setSelectedColor] =
     useState<SelectedColorType>("black");
@@ -21,18 +24,18 @@ function BuyNowOptions() {
       <Switcher>
         <SwitcherOption
           onClick={() => {
-            setSelectedType("accent");
+            setSelectedType("Hundai Accent 2023");
           }}
-          isSelected={selectedType == "accent"}
+          isSelected={selectedType == "Hundai Accent 2023"}
         >
           Hundai Accent 2023
         </SwitcherOption>
 
         <SwitcherOption
           onClick={() => {
-            setSelectedType("i10");
+            setSelectedType("Hundai i10 2024");
           }}
-          isSelected={selectedType == "i10"}
+          isSelected={selectedType == "Hundai i10 2024"}
         >
           Hundai i10 2024
         </SwitcherOption>
@@ -87,7 +90,7 @@ function BuyNowOptions() {
         <ImageContainer>
           <img
             height="280"
-            src={selectedType == "accent" ? device1 : device2}
+            src={selectedType == "Hundai Accent 2023" ? accent_black : i10}
           ></img>
         </ImageContainer>
         <QualitiesRight>
@@ -120,8 +123,8 @@ function BuyNowOptions() {
       <PricingContainer>
         <PricingLeft>
           <PricingLeftContent>
-            <h1>Tractive DOG 6</h1>
-            <h2>£59</h2>
+            <h1>{selectedType}</h1>
+            {/*  <h2>£59</h2> */}
           </PricingLeftContent>
         </PricingLeft>
         <PricingRight>
@@ -168,7 +171,9 @@ function BuyNowOptions() {
             textDecoration: "none",
           }}
           href={
-            selectedType == "accent" ? "/gps-tracker-dog" : "/gps-tracker-cat"
+            selectedType == "Hundai Accent 2023"
+              ? "/gps-tracker-dog"
+              : "/gps-tracker-cat"
           }
         >
           <ButtonLearnMore>اعرف المزيد</ButtonLearnMore>
@@ -182,7 +187,9 @@ function BuyNowOptions() {
             textDecoration: "none",
           }}
           href={
-            selectedType == "accent" ? "/gps-tracker-dog" : "/gps-tracker-cat"
+            selectedType == "Hundai Accent 2023"
+              ? "/gps-tracker-dog"
+              : "/gps-tracker-cat"
           }
         >
           <ButtonBuy>احجز الآن</ButtonBuy>
