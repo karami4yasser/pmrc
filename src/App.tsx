@@ -11,15 +11,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/about" element={<About />} />
-        <Route
-          path="/gps-tracker-dog"
-          element={<GpsTrackerProduct type="dog" />}
-        />
-        <Route
-          path="/gps-tracker-cat"
-          element={<GpsTrackerProduct type="cat" />}
-        />
+        <Route path="/cars" element={<Home />} />
       </Routes>
     </BrowserRouter>
   );
