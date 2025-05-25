@@ -191,7 +191,7 @@ const Hero_ContentSubTitle = styled.h2`
   margin-top: 28px;
 
   @media (max-width: 1268px) {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     line-height: 1.6rem;
     margin-top: 12px;
     text-align: center;
@@ -220,8 +220,8 @@ const Hero_Button = styled.div`
   padding: 0.75rem 2.5rem;
 
   @media (max-width: 1268px) {
-    min-width: fit-content;
-    padding: 0.75rem 1.75rem;
+    min-width: 6.5rem;
+    padding: 0.5rem 1.5rem;
   }
 
   font-size: 1rem;
