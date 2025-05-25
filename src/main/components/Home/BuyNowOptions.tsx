@@ -75,7 +75,7 @@ function BuyNowOptions() {
           },
           {
             icon: SettingsIcon,
-            text: "Boite Vitesse Manual",
+            text: "Boite Vitesse Manuelle",
           },
           {
             icon: LocalGasStationIcon,
