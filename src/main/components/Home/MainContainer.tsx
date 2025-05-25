@@ -31,11 +31,7 @@ function MainContainer() {
       <LeftSideMainContainer>
         <Hero_Content>
           <Hero_ContentTitle>وكالة كراء سيارات</Hero_ContentTitle>
-          <Hero_ContentSubTitle
-            style={{
-              textAlign: "center",
-            }}
-          >
+          <Hero_ContentSubTitle style={{}}>
             Puerto Marina Rent Car
           </Hero_ContentSubTitle>
         </Hero_Content>
